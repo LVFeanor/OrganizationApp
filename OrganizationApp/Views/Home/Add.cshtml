@@ -1,0 +1,44 @@
+﻿@model OrganizationApp.Models.Organization
+
+@{
+    ViewBag.Title = "Создание организации";
+}
+@using (Html.BeginForm())
+{
+    <div>
+        <h3>Форма создания организации</h3>
+        <form method="post">
+        <div class="organizationBlock">
+            <h3>Данные организации</h3>
+            <p>Введите наименование организации: <input type="text" name="Title" required /></p>
+            <p>Введите ИНН организации: <input type="text" name="Tin" required pattern="[0-9]{10,12}" /></p>
+        </div>
+        <div class="foundersBlock">
+            <div class="founderItem">
+                <h3>Данные учредителя</h3>
+                <div>
+                    <label>Введите фамилию учредителя: <input type="text" name="Surname" /></label>
+                    <label>Введите имя учредителя: <input type="text" name="Name" /></label>
+                    <label>Введите отчество учредителя: <input type="text" name="MiddleName" /></label>
+                </div>
+                <p><a class="addLink">Добавить ещё одного учредителя</a></p>
+            </div>
+            <p><a href="/Home/Add"><input type="submit" value="Сохранить" /></a></p>
+        </div>
+        </form>
+    </div>       
+}
+@section Scripts{
+    <script>
+        $(function () {
+            var i = 0;
+            $('.addLink').click(function () {
+                i++;
+                var html2Add = "<div class='founderItem'>" +
+                    "<div><label>Введите фамилию учредителя: <input type='text' name='Surname' /></label>" +
+                    "</div></div>";
+                $('#foundersBlock').append(html2Add);
+            })
+        })
+    </script>
+}

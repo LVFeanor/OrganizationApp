@@ -1,0 +1,45 @@
+﻿@model IEnumerable<OrganizationApp.Models.Founder>
+
+@{
+    ViewBag.Title = "Главная страница";
+}
+
+<h2>Список организаций и учредителей</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Наименование организации
+        </th>
+        <th>
+            Фамилия учредителя
+        </th>
+        <th>
+            Имя учредителя
+        </th>
+        <th>
+            Отчество учредителя
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Organizations.Title)           
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+    </tr>
+}
+</table>
+<p>
+    <a href="/Home/Add"><input type="submit" value="Добавить организацию" /></a>
+</p>
